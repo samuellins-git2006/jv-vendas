@@ -134,7 +134,7 @@ function renderizarHistorico() {
             <td>${item.descricao}</td>
             <td>R$ ${item.valor.toFixed(2)}</td>
             <td>
-                <button onclick="removerItemDoHistorico('${item.tabela}', ${item.idx})" class="btn-deletar-linha">🗑️</button>
+                <button onclick="removerItemDoHistorico('${item.tabela}', ${item.idx})" class="btn-deletar-linha" title="Excluir">🗑️</button>
             </td>
         `;
         corpoTabela.appendChild(linha);
@@ -177,13 +177,17 @@ function renderizarClientes() {
     const tabela = document.getElementById('lista-clientes');
     tabela.innerHTML = '';
 
-    clientes.forEach(c => {
+    // Adicionado o 'index' aqui para sabermos qual cliente apagar
+    clientes.forEach((c, index) => {
         const classeBadge = c.demanda === 'Alta' ? 'badge-alta' : 'badge-baixa';
         const linha = document.createElement('tr');
         linha.innerHTML = `
             <td><strong>${c.nome}</strong></td>
             <td>${c.fone || 'Sem Tel'}</td>
             <td><span class="badge ${classeBadge}">${c.demanda}</span></td>
+            <td>
+                <button onclick="deletarCliente(${index})" class="btn-deletar-linha" title="Excluir Cliente">🗑️</button>
+            </td>
         `;
         tabela.appendChild(linha);
     });
@@ -203,15 +207,25 @@ function atualizarDropdownClientes() {
     });
 }
 
+// 🗑️ Função corrigida e conectada ao banco de dados para remover cliente
+function deletarCliente(index) {
+    if (confirm("Tem certeza que deseja excluir este cliente? O nome dele sairá da lista de vendas.")) {
+        // Remove da array
+        clientes.splice(index, 1);
+        
+        // Salva a alteração no LocalStorage do navegador
+        localStorage.setItem('jv_clientes', JSON.stringify(clientes));
+        
+        // Atualiza a tela imediatamente
+        renderizarClientes();
+    }
+}
+
 // 🚪 Função para deslogar do sistema
 function logout() {
-    // Remove o "oculto" da tela de login para ela aparecer
     document.getElementById('tela-login').classList.remove('oculto');
-    
-    // Adiciona o "oculto" no sistema para ele sumir
     document.getElementById('conteudo-sistema').classList.add('oculto');
     
-    // Limpa os campos de e-mail e senha por segurança
     if (document.getElementById('login-email')) document.getElementById('login-email').value = '';
     if (document.getElementById('login-senha')) document.getElementById('login-senha').value = '';
 }
