@@ -9,7 +9,7 @@ function executarLogin() {
     const senhaInformada = document.getElementById('login-senha').value;
 
     // Credenciais definidas por você
-    if (emailInformado === '@joaovictor.7z' && senhaInformada === 'jvendas') {
+    if (emailInformado === 'joaovictor.7z' && senhaInformada === 'jvendas') {
         // Esconde a tela de login e mostra o painel principal
         document.getElementById('tela-login').classList.add('oculto');
         document.getElementById('conteudo-sistema').classList.remove('oculto');
