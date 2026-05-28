@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JV Vendas - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="aba-inicio" class="tela-aba">
+        <header class="header-dashboard">
+            <img src="assets/logo.png" alt="JV Vendas Logo" class="logo-dashboard">
+            <div>
+                <h1>Visão Geral</h1>
+                <p>Bem-vindo de volta! 👋</p>
+            </div>
+        </header>
+
+        <div class="grid-cards">
+            <div class="card card-azul">
+                <span class="icone">💲</span>
+                <p>Vitrine (Hoje)</p>
+                <h3 id="card-vitrine">R$ 0,00</h3>
+            </div>
+            <div class="card card-verde">
+                <span class="icone">📊</span>
+                <p>Lucro do Dia</p>
+                <h3 id="card-lucro-dia">R$ 0,00</h3>
+            </div>
+            <div class="card card-vermelho">
+                <span class="icone">📋</span>
+                <p>Gasto (Moto/Prod)</p>
+                <h3 id="card-gasto-unidade">R$ 0,00</h3>
+            </div>
+            <div class="card card-vermelho-esf">
+                <span class="icone">💼</span>
+                <p>Gasto (Total)</p>
+                <h3 id="card-gasto-total">R$ 0,00</h3>
+            </div>
+        </div>
+
+        <div class="card-lucro-liquido">
+            <span class="icone-carteira">👛</span>
+            <div>
+                <p>Lucro Líquido (Total)</p>
+                <h2 id="card-lucro-liquido-val">R$ 0,00</h2>
+            </div>
+        </div>
+
+        <div class="status-ponto">
+            <span>ℹ️</span> <strong>Ponto de Venda Principal:</strong> <span class="destaque-laranja">Entregas de Moto</span>
+        </div>
+
+        <div class="container-formularios">
+            <div class="bloco-form form-venda">
+                <h3>🛒 Registrar Venda</h3>
+                <input type="text" id="venda-cliente" placeholder="Nome do Cliente">
+                <input type="text" id="venda-ponto" placeholder="Ponto de Venda (Ex: Bar do Zé)">
+                <input type="number" id="venda-valor" placeholder="Valor (R$)">
+                <input type="number" id="venda-custo" placeholder="Custo da Bebida (R$)">
+                <button onclick="adicionarVenda()" class="btn-verde">+ Iniciar Venda</button>
+            </div>
+
+            <div class="bloco-form form-despesa">
+                <h3>📄 Registrar Despesa</h3>
+                <select id="despesa-categoria">
+                    <option value="Gasolina">Gasolina ⛽</option>
+                    <option value="Manutenção Moto">Manutenção da Moto 🔧</option>
+                    <option value="Compra de Bebidas">Compra de Estoque 🍾</option>
+                    <option value="Outros">Outros 💵</option>
+                </select>
+                <input type="number" id="despesa-valor" placeholder="Valor (R$)">
+                <button onclick="adicionarDespesa()" class="btn-vermelho">+ Adicionar Despesa</button>
+            </div>
+        </div>
+
+        <div class="historico-container">
+            <h3>🕒 Histórico de Registros</h3>
+            <div class="tabela-responsiva">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-historico">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="aba-clientes" class="tela-aba oculto">
+        <header class="header-dashboard">
+            <h1>Controle de Clientes</h1>
+            <p>Gerencie seus clientes de forma rápida e fácil</p>
+        </header>
+
+        <div class="bloco-form">
+            <h3>👤 Cadastrar Novo Cliente</h3>
+            <input type="text" id="cliente-nome" placeholder="Nome ou CNPJ/CPF do Cliente">
+            <input type="text" id="cliente-fone" placeholder="Contato (Telefone)">
+            <select id="cliente-demanda">
+                <option value="Alta">🔥 Alta Demanda</option>
+                <option value="Baixa">❄️ Baixa Demanda</option>
+            </select>
+            <button onclick="adicionarCliente()" class="btn-azul">👤 Adicionar Cliente</button>
+        </div>
+
+        <div class="historico-container">
+            <h3>👥 Clientes Cadastrados</h3>
+            <div class="tabela-responsiva">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Contato</th>
+                            <th>Demanda</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-clientes">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <nav class="nav-bottom">
+        <button onclick="mudarAba('inicio')" class="nav-item ativo" id="btn-nav-inicio">
+            <span>🏠</span>
+            <p>Início</p>
+        </button>
+        <button onclick="mudarAba('clientes')" class="nav-item" id="btn-nav-clientes">
+            <span>👥</span>
+            <p>Clientes</p>
+        </button>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
