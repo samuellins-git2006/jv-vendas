@@ -51,7 +51,7 @@ body {
 
 /* Configuração do movimento individual das linhas */
 .linha-marcadagua {
-    font-size: 70px;
+    font-size: 25px;
     font-weight: 900;
     white-space: nowrap;
     color: var(--texto-claro);
