@@ -8,14 +8,17 @@
 </head>
 <body>
 
+    <!-- 🔒 TELA DE LOGIN ANIMADA -->
     <div id="tela-login" class="tela-autenticacao">
+        <!-- Textos em marca d'água correndo de forma independente ao fundo -->
         <div class="fundo-animado-texto">
-            <div class="linha-marcadagua">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
-            <div class="linha-marcadagua">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
-            <div class="linha-marcadagua">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
-            <div class="linha-marcadagua">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
+            <div class="linha-marcadagua l1">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
+            <div class="linha-marcadagua l2">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
+            <div class="linha-marcadagua l3">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
+            <div class="linha-marcadagua l4">JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS &nbsp;&nbsp;&nbsp;&nbsp; JV VENDAS</div>
         </div>
 
+        <!-- Caixa de Login Centralizada -->
         <div class="card-login">
             <img src="assets/logo.png" alt="Logo JV Vendas" class="logo-login">
             <h2>acesso restrito</h2>
@@ -28,8 +31,10 @@
     </div>
 
 
+    <!-- 💻 CONTEÚDO DO SISTEMA -->
     <div id="conteudo-sistema" class="oculto">
         
+        <!-- ABA 1: VISÃO GERAL -->
         <section id="aba-inicio" class="tela-aba">
             <header class="header-dashboard">
                 <img src="assets/logo.png" alt="JV Vendas Logo" class="logo-dashboard">
@@ -39,6 +44,7 @@
                 </div>
             </header>
 
+            <!-- Cards de Indicadores -->
             <div class="grid-cards">
                 <div class="card card-azul">
                     <span class="icone">💲</span>
@@ -62,6 +68,7 @@
                 </div>
             </div>
 
+            <!-- Card Destaque Lucro Líquido -->
             <div class="card-lucro-liquido">
                 <span class="icone-carteira">👛</span>
                 <div>
@@ -74,7 +81,9 @@
                 <span>ℹ️</span> <strong>Ponto de Venda Principal:</strong> <span class="destaque-laranja">Entregas de Moto</span>
             </div>
 
+            <!-- Formulários de Registro -->
             <div class="container-formularios">
+                <!-- Registrar Venda -->
                 <div class="bloco-form form-venda">
                     <h3>🛒 Registrar Venda</h3>
                     <select id="venda-cliente">
@@ -85,6 +94,7 @@
                     <button onclick="adicionarVenda()" class="btn-verde">+ Iniciar Venda</button>
                 </div>
 
+                <!-- Registrar Despesa -->
                 <div class="bloco-form form-despesa">
                     <h3>📄 Registrar Despesa</h3>
                     <select id="despesa-categoria">
@@ -98,6 +108,7 @@
                 </div>
             </div>
 
+            <!-- Histórico -->
             <div class="historico-container">
                 <h3>🕒 Histórico de Registros</h3>
                 <div class="tabela-responsiva">
@@ -111,12 +122,14 @@
                             </tr>
                         </thead>
                         <tbody id="lista-historico">
-                            </tbody>
+                            <!-- Inserido via JavaScript -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
+        <!-- ABA 2: CLIENTES -->
         <section id="aba-clientes" class="tela-aba oculto">
             <header class="header-dashboard">
                 <h1>Controle de Clientes</h1>
@@ -146,12 +159,14 @@
                             </tr>
                         </thead>
                         <tbody id="lista-clientes">
-                            </tbody>
+                            <!-- Inserido via JavaScript -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
+        <!-- BARRA DE NAVEGAÇÃO INFERIOR -->
         <nav class="nav-bottom">
             <button onclick="mudarAba('inicio')" class="nav-item ativo" id="btn-nav-inicio">
                 <span>🏠</span>

@@ -23,7 +23,7 @@ body {
 
 .oculto { display: none !important; }
 
-/* 🔒 ESTRUTURA DO LOGIN */
+/* 🔒 ESTRUTURA DO LOGIN E ANIMAÇÃO */
 .tela-autenticacao {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -35,36 +35,45 @@ body {
     z-index: 999;
 }
 
-/* Marca d'água em movimento */
+/* Container do texto de fundo */
 .fundo-animado-texto {
     position: absolute;
-    width: 200%;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    opacity: 0.03; /* Deixa o texto bem suave ao fundo */
+    opacity: 0.12; 
     pointer-events: none;
-    transform: rotate(-15px);
 }
 
+/* Configuração do movimento individual das linhas */
 .linha-marcadagua {
-    font-size: 75px;
+    font-size: 70px;
     font-weight: 900;
     white-space: nowrap;
     color: var(--texto-claro);
-    /* Faz a animação durar 25 segundos e rodar para sempre de forma contínua */
-    animation: moverInfinito 25s linear infinite;
+    display: block;
+    width: max-content;
+    animation: moverEsquerdaParaDireita 25s linear infinite;
 }
 
-/* Segunda e quarta linha correm na velocidade contrária para dar dinâmica */
-.linha-marcadagua:nth-child(even) {
-    animation-direction: reverse;
-}
+/* Atrasos calculados para espalhar os textos pela tela */
+.linha-marcadagua.l1 { animation-delay: 0s; }
+.linha-marcadagua.l2 { animation-delay: -6s; }
+.linha-marcadagua.l3 { animation-delay: -12s; }
+.linha-marcadagua.l4 { animation-delay: -18s; }
 
-@keyframes moverInfinito {
-    0% { transform: translateX(-40%); }
-    100% { transform: translateX(0%); }
+/* Engrenagem que faz mover da esquerda para a direita */
+@keyframes moverEsquerdaParaDireita {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
 }
 
 /* Caixa de Login */
@@ -227,12 +236,10 @@ button {
 .btn-vermelho { background-color: var(--vermelho); }
 .btn-azul { background-color: var(--azul); }
 
-/* AFASTAMENTO DE QUADRADOS SOLICITADO */
 .card-afastado-clientes {
     margin-top: 40px; 
 }
 
-/* Botão de excluir lixeira */
 .btn-deletar-linha {
     background: none;
     border: none;
@@ -279,6 +286,7 @@ th { color: var(--texto-cinza); }
 .badge-alta { background-color: #FEF3C7; color: #D97706; }
 .badge-baixa { background-color: #E0F2FE; color: #0369A1; }
 
+/* 📱 NAVEGAÇÃO FIXA INFERIOR */
 .nav-bottom {
     position: fixed;
     bottom: 0; left: 0; right: 0;
